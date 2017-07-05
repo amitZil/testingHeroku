@@ -1,0 +1,2 @@
+dj-database-url==0.4.1gunicorn==19.6.0
+psycopg2==2.6.2

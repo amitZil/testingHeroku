@@ -1,10 +1,6 @@
-import http.server
-import socketserver
+from flask import Flask
+application = Flask(__name__)
 
-PORT = 80
-
-Handler = http.server.SimpleHTTPRequestHandler
-
-with socketserver.TCPServer(("", PORT), Handler) as httpd:
-    print("serving at port", PORT)
-    httpd.serve_forever()
+@application.route('/')
+def hello_world():
+	return "<h1 style='color:blue'>Nogi tembeluli!</h1>"
