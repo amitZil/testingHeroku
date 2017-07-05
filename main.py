@@ -11,12 +11,12 @@ def hello_world():
     conn = connectDB()
     cur = conn.cursor()
     cur.execute('select "Col1" from public."Test"')
-    return "<h1 style='color:blue'>"+cur.fetchone()+"</h1>"
+    return "<h1 style='color:blue'>"+cur.fetchone()[0]+"</h1>"
 
 
 def connectDB(i_database=None, i_user=None, i_password=None, i_host=None, i_port=None):
     #urlparse.uses_netloc.append("postgres")
-    url = urlparse(q)(os.environ["DATABASE_URL"])
+    url = urlparse(os.environ["DATABASE_URL"])
 
     if i_database is None:
         conn = psycopg2.connect(
@@ -39,10 +39,11 @@ def connectDB(i_database=None, i_user=None, i_password=None, i_host=None, i_port
 
 
 
-#q = 'postgres://lpxwpbyxzaimtq:fc712f2b7cff6d6a1757ea8c99dd9f39e30345d61ab394e421bcdf327f626be7@ec2-54-75-229-201.eu-west-1.compute.amazonaws.com:5432/d5lh5hdl6s3klp'
-
-#print (o)
-#conn = connectDB('d5lh5hdl6s3klp', 'lpxwpbyxzaimtq', 'fc712f2b7cff6d6a1757ea8c99dd9f39e30345d61ab394e421bcdf327f626be7',                'ec2-54-75-229-201.eu-west-1.compute.amazonaws.com', '5432')
-#cur = conn.cursor()
-#cur.execute('select "Col1" from public."Test"')
-#print(cur.fetchone())
+q = 'postgres://lpxwpbyxzaimtq:fc712f2b7cff6d6a1757ea8c99dd9f39e30345d61ab394e421bcdf327f626be7@ec2-54-75-229-201.eu-west-1.compute.amazonaws.com:5432/d5lh5hdl6s3klp'
+o = urlparse(q)
+print (o)
+conn = connectDB('d5lh5hdl6s3klp', 'lpxwpbyxzaimtq', 'fc712f2b7cff6d6a1757ea8c99dd9f39e30345d61ab394e421bcdf327f626be7','ec2-54-75-229-201.eu-west-1.compute.amazonaws.com', '5432')
+cur = conn.cursor()
+cur.execute('select "Col1" from public."Test"')
+z = cur.fetchone()
+print(z)
