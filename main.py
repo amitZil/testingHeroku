@@ -8,7 +8,9 @@ application = Flask(__name__)
 
 @application.route('/')
 def hello_world():
-    return "<h1 style='color:blue'>"+os.environ["DATABASE_URL"]+"</h1>"
+    q = 'postgres://lpxwpbyxzaimtq:fc712f2b7cff6d6a1757ea8c99dd9f39e30345d61ab394e421bcdf327f626be7@ec2-54-75-229-201.eu-west-1.compute.amazonaws.com:5432/d5lh5hdl6s3klp'
+    o = urlparse(q)
+    return "<h1 style='color:blue'>"+o+"</h1>"
 
 
 def connectDB(i_database=None, i_user=None, i_password=None, i_host=None, i_port=None):
@@ -32,6 +34,9 @@ def connectDB(i_database=None, i_user=None, i_password=None, i_host=None, i_port
             port=i_port
         )
     return conn
+
+
+
 
 
 conn = connectDB('d5lh5hdl6s3klp', 'lpxwpbyxzaimtq', 'fc712f2b7cff6d6a1757ea8c99dd9f39e30345d61ab394e421bcdf327f626be7',
