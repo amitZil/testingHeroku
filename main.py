@@ -8,14 +8,15 @@ application = Flask(__name__)
 
 @application.route('/')
 def hello_world():
-    q = 'postgres://lpxwpbyxzaimtq:fc712f2b7cff6d6a1757ea8c99dd9f39e30345d61ab394e421bcdf327f626be7@ec2-54-75-229-201.eu-west-1.compute.amazonaws.com:5432/d5lh5hdl6s3klp'
-    o = urlparse(q)
-    return "<h1 style='color:blue'>"+o+"</h1>"
+    conn = connectDB()
+    cur = conn.cursor()
+    cur.execute('select "Col1" from public."Test"')
+    return "<h1 style='color:blue'>"+cur.fetchone()+"</h1>"
 
 
 def connectDB(i_database=None, i_user=None, i_password=None, i_host=None, i_port=None):
     #urlparse.uses_netloc.append("postgres")
-    #url = urlparse.urlparse(os.environ["DATABASE_URL"])
+    url = urlparse(q)(os.environ["DATABASE_URL"])
 
     if i_database is None:
         conn = psycopg2.connect(
@@ -38,9 +39,10 @@ def connectDB(i_database=None, i_user=None, i_password=None, i_host=None, i_port
 
 
 
+#q = 'postgres://lpxwpbyxzaimtq:fc712f2b7cff6d6a1757ea8c99dd9f39e30345d61ab394e421bcdf327f626be7@ec2-54-75-229-201.eu-west-1.compute.amazonaws.com:5432/d5lh5hdl6s3klp'
 
-conn = connectDB('d5lh5hdl6s3klp', 'lpxwpbyxzaimtq', 'fc712f2b7cff6d6a1757ea8c99dd9f39e30345d61ab394e421bcdf327f626be7',
-                'ec2-54-75-229-201.eu-west-1.compute.amazonaws.com', '5432')
-cur = conn.cursor()
-cur.execute('select "Col1" from public."Test"')
-print(cur.fetchone())
+#print (o)
+#conn = connectDB('d5lh5hdl6s3klp', 'lpxwpbyxzaimtq', 'fc712f2b7cff6d6a1757ea8c99dd9f39e30345d61ab394e421bcdf327f626be7',                'ec2-54-75-229-201.eu-west-1.compute.amazonaws.com', '5432')
+#cur = conn.cursor()
+#cur.execute('select "Col1" from public."Test"')
+#print(cur.fetchone())
