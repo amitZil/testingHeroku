@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath ./src wsgi --log-file -
+web: gunicorn --pythonpath ./testingHeroku wsgi --log-file -

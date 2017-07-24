@@ -1,6 +1,6 @@
 from DB.DB import DB
 
-DBLayer = DB(True);
+DBLayer = DB(True)
 
 
 def get_DB():

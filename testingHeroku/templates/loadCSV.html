@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {{ title }}</title>
+    <script src="{{ url_for('static', filename='loadCSV.js') }}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <form class="form-horizontal" id="upload-file" method="post" enctype="multipart/form-data">
+        <fieldset>
+
+        <!-- Form Name -->
+            <legend>Upload CSV</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="schema">Schema:</label>
+              <div class="col-md-4">
+              <input id="schema" name="schema" type="text" value="public" placeholder="" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="table">Table name:</label>
+              <div class="col-md-4">
+              <input id="table" name="table" type="text" value='"Stark"' placeholder="" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- File Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="file">Select CSV:</label>
+              <div class="col-md-4">
+                <input id="file" name="file" class="input-file" type="file">
+              </div>
+            </div>
+
+            <!-- Button (Double) -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="upload-file-btn"></label>
+              <div class="col-md-8">
+                <button id="upload-file-btn" type="button" class="btn btn-success">Upload CSV</button>
+                <button id="delete-file-btn" type="button" class="btn btn-danger">Delete Records</button>
+              </div>
+            </div>
+
+        </fieldset>
+    </form>
+    <div id="ajaxResponse"></div>
+</body>
+</html>
