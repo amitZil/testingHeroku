@@ -36,10 +36,10 @@ class DB:
 
 
     def connect(self, i_debug=False):
-        if i_debug:
-            url = urlparse(self.LOCALCONNECTIONSTRING)
-        else:
+        try:
             url = urlparse(os.environ["DATABASE_URL"])
+        except:
+            url = urlparse(self.LOCALCONNECTIONSTRING)
 
         con = psycopg2.connect(
             database=url.path[1:],
