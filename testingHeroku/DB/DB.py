@@ -72,7 +72,7 @@ class DB:
                 valuesArray = jsonParamsArray.get('valueArray')
                 args_str = (curs.mogrify(self.VALUES_FORMAT, x).decode('utf-8-sig') for x in valuesArray)
                 args_str = ','.join(args_str)
-                if jsonParamsArray['AllowUpdate'] == 'on':
+                if jsonParamsArray['AllowUpdate'] is not None:
                     query = self.TABLESCHEMA_FORMAT.format(args_str, self.ONCONFLICT_UPDATE)
                 else:
                     query = self.TABLESCHEMA_FORMAT.format(args_str, self.ONCONFLICT_NOTHING)

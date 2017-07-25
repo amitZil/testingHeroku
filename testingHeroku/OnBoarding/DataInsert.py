@@ -25,10 +25,10 @@ class DataInsertService:
             csv_data = csv.reader(io.StringIO(content), delimiter=',')
             file_val.close()
             queryParams = {}
-            queryParams['valueArray'] = CSVUtils.CSVUtils.getQueryValuesFromCSV(csv_data)
             queryParams['table'] = AsIs(request.form.get('table'))
             queryParams['schema'] = AsIs(request.form.get('schema'))
             queryParams['AllowUpdate'] = request.form.get('AllowUpdate')
+            queryParams['valueArray'] = CSVUtils.CSVUtils.getQueryValuesFromCSV(csv_data)
             # file_val.save(file_val.filename) Will we save the file?
 
             db = DBLayer.get_DB()
