@@ -1,6 +1,8 @@
 window.onload = function() {
    $(function() {
     $('#upload-file-btn').click(function() {
+        $('#ajaxResponse')[0].className = "";
+        $('#ajaxResponse')[0].innerText='';
         var form_data = new FormData($('#upload-file')[0]);
         $.ajax({
             type: 'POST',
@@ -21,6 +23,8 @@ window.onload = function() {
         });
     });
     $('#delete-file-btn').click(function() {
+        $('#ajaxResponse')[0].className = "";
+        $('#ajaxResponse')[0].innerText='';
         var form_data = new FormData($('#upload-file')[0]);
         $.ajax({
             type: 'POST',
